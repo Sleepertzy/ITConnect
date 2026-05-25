@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ITConnect — Dashboard</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.rec-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; margin-bottom:28px; }
+.proj-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--r2); padding:20px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  transition:all .2s; cursor:pointer;
+}
+.proj-card:hover { border-color:var(--border2); transform:translateY(-2px); box-shadow:0 8px 30px rgba(0,0,0,0.3); }
+.proj-card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
+.proj-cat { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--cyan); }
+.proj-hot { font-size:0.75rem; background:rgba(255,100,0,0.12); color:#ff7043; padding:2px 8px; border-radius:6px; font-weight:600; }
+.proj-title { font-size:0.98rem; font-weight:700; margin-bottom:8px; line-height:1.3; }
+.proj-client { font-size:0.8rem; color:var(--text2); margin-bottom:12px; }
+.proj-budget { font-size:1.1rem; font-weight:800; color:var(--cyan); font-family:var(--mono); margin-bottom:12px; }
+.proj-skills { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; }
+.proj-skill { padding:3px 8px; border-radius:6px; font-size:0.74rem; background:var(--surface2); border:1px solid var(--border); color:var(--text2); }
+
+.two-col { display:grid; grid-template-columns:1fr 340px; gap:20px; }
+.progress-section { background:var(--surface); border:1px solid var(--border); border-radius:var(--r2); padding:22px; }
+.progress-title { font-size:0.95rem; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:6px; }
+
+.stat-row { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--border); }
+.stat-row:last-child { border-bottom:none; }
+.stat-row-label { font-size:0.85rem; color:var(--text2); }
+.stat-row-val { font-size:1.1rem; font-weight:800; font-family:var(--mono); }
+
+.quick-actions { display:flex; flex-direction:column; gap:10px; }
+.quick-action {
+  display:flex; align-items:center; gap:12px;
+  padding:14px 16px; border-radius:12px;
+  background:var(--bg2); border:1px solid var(--border);
+  cursor:pointer; transition:all .15s; text-decoration:none; color:var(--text);
+}
+.quick-action:hover { background:var(--surface); border-color:var(--border2); }
+.qa-icon { width:36px; height:36px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+.qa-title { font-size:0.88rem; font-weight:700; }
+.qa-sub   { font-size:0.76rem; color:var(--text2); }
+
+@media(max-width:992px) { .two-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div id="app-root"></div>
+<script src="shared-nav.js"></script>
+<script>
+buildNav('dashboard','Dashboard','Selamat datang kembali, Afiq! 👋');
+
+document.getElementById('inner-content').innerHTML = `
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-label">Proyek Selesai</div>
+    <div class="stat-value" style="color:var(--cyan)">3</div>
+    <div class="stat-change">↑ +1 bulan ini</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Rating Rata-rata</div>
+    <div class="stat-value" style="color:var(--amber)">4.8</div>
+    <div class="stat-change" style="color:var(--amber)">★★★★★</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Total Pendapatan</div>
+    <div class="stat-value" style="color:var(--green)">Rp3.2jt</div>
+    <div class="stat-change">↑ Rp800rb bulan ini</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Proyek Aktif</div>
+    <div class="stat-value">1</div>
+    <div class="stat-change" style="color:var(--text2)">Sedang berjalan</div>
+  </div>
+</div>
+
+<div class="card-title" style="margin-bottom:16px;">🔥 Rekomendasi Proyek</div>
+<div class="rec-grid">
+  <div class="proj-card" onclick="window.location.href='projects.html'">
+    <div>
+      <div class="proj-card-top">
+        <span class="proj-cat">Web Dev</span>
+        <span class="proj-hot">🔥 Hot</span>
+      </div>
+      <div class="proj-title">Website Toko Online UMKM Bandung</div>
+      <div class="proj-client">📍 Klien: UMKM Bandung</div>
+      <div class="proj-budget">Rp 2.000.000</div>
+      <div class="proj-skills">
+        <span class="proj-skill">React</span>
+        <span class="proj-skill">Node.js</span>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-sm" style="width:100%; justify-content:center; margin-top:10px;">Lihat Proyek</button>
+  </div>
+
+  <div class="proj-card" onclick="window.location.href='projects.html'">
+    <div>
+      <div class="proj-card-top">
+        <span class="proj-cat">Mobile Dev</span>
+      </div>
+      <div class="proj-title">Aplikasi Tracking Kurir Internal</div>
+      <div class="proj-client">📍 Klien: Logistik Express</div>
+      <div class="proj-budget">Rp 4.500.000</div>
+      <div class="proj-skills">
+        <span class="proj-skill">Flutter</span>
+        <span class="proj-skill">Firebase</span>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-sm" style="width:100%; justify-content:center; margin-top:10px;">Lihat Proyek</button>
+  </div>
+
+  <div class="proj-card" onclick="window.location.href='projects.html'">
+    <div>
+      <div class="proj-card-top">
+        <span class="proj-cat">UI/UX Design</span>
+      </div>
+      <div class="proj-title">Redesign Dashboard EduTech</div>
+      <div class="proj-client">📍 Klien: Startup Kampus Merdeka</div>
+      <div class="proj-budget">Rp 1.500.000</div>
+      <div class="proj-skills">
+        <span class="proj-skill">Figma</span>
+        <span class="proj-skill">Prototyping</span>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-sm" style="width:100%; justify-content:center; margin-top:10px;">Lihat Proyek</button>
+  </div>
+</div>
+
+<div class="two-col">
+  <div class="progress-section">
+    <div class="progress-title">⚡ Proyek Berjalan (In Progress)</div>
+    <div style="margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <div style="font-weight:700; font-size:1rem;">Sistem Antrean Klinik Web</div>
+        <div style="font-size:0.8rem; color:var(--text2)">Klien: Dr. Suwandi</div>
+      </div>
+      <span class="badge badge-cyan">Sisa 5 hari</span>
+    </div>
+    <div style="margin-bottom:8px; display:flex; justify-content:space-between; font-size:0.78rem;">
+      <span style="color:var(--text2)">Milestone: Pembuatan API & Dashboard</span>
+      <span style="font-weight:700; color:var(--cyan);">75%</span>
+    </div>
+    <div class="progress-bar" style="margin-bottom:20px;">
+      <div class="progress-fill" style="width: 75%"></div>
+    </div>
+    <div class="escrow-status">🛡️ Dana Rp1.200.000 aman di Escrow ITConnect</div>
+  </div>
+
+  <div>
+    <div class="card-title" style="margin-bottom:12px;">Aksi Cepat</div>
+    <div class="quick-actions">
+      <a href="portfolio.html" class="quick-action">
+        <div class="qa-icon" style="background:var(--cyan-dim); color:var(--cyan)">📁</div>
+        <div>
+          <div class="qa-title">Update Portofolio</div>
+          <div class="qa-sub">Sinkronisasi repositori GitHub baru</div>
+        </div>
+      </a>
+      <a href="collab.html" class="quick-action">
+        <div class="qa-icon" style="background:var(--green-dim); color:var(--green)">🤝</div>
+        <div>
+          <div class="qa-title">Cari Partner Tim</div>
+          <div class="qa-sub">Ajak mahasiswa prodi lain gabung</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>`;
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ITConnect — Cari Proyek</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.search-grid { display: grid; grid-template-columns: 260px 1fr; gap: 20px; }
+.filter-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 20px; height: fit-content; }
+.filter-title { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text2); margin-bottom: 12px; }
+.filter-option { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text); margin-bottom: 8px; cursor: pointer; }
+.filter-option input { accent-color: var(--cyan); }
+
+.project-list { display: flex; flex-direction: column; gap: 14px; }
+.feed-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 22px;
+  transition: all 0.2s; display: grid; grid-template-columns: 1fr 180px; gap: 20px;
+}
+.feed-card:hover { border-color: var(--border2); transform: translateX(2px); }
+.feed-info { display: flex; flex-direction: column; justify-content: space-between; }
+.feed-meta { display: flex; align-items: center; gap: 12px; font-size: 0.78rem; color: var(--text3); margin-top: auto; }
+.feed-right { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; text-align: right; }
+</style>
+</head>
+<body>
+<div id="app-root"></div>
+<script src="shared-nav.js"></script>
+<script>
+buildNav('projects','Eksplorasi Proyek','Temukan proyek nyata berskala UMKM & korporat');
+
+document.getElementById('inner-content').innerHTML = `
+<div class="search-grid">
+  <!-- FILTER SIDEBAR -->
+  <div class="filter-card">
+    <div class="filter-title">Kategori</div>
+    <label class="filter-option"><input type="checkbox" checked/> Web Development</label>
+    <label class="filter-option"><input type="checkbox" checked/> Mobile Apps</label>
+    <label class="filter-option"><input type="checkbox"/> UI/UX Design</label>
+    <label class="filter-option"><input type="checkbox"/> Data Science</label>
+
+    <div class="divider"></div>
+    <div class="filter-title">Skala Budget</div>
+    <label class="filter-option"><input type="radio" name="b" checked/> Semua Budget</label>
+    <label class="filter-option"><input type="radio" name="b"/> < Rp1.000.000</label>
+    <label class="filter-option"><input type="radio" name="b"/> Rp1jt - Rp5jt</label>
+    <label class="filter-option"><input type="radio" name="b"/> > Rp5.000.000</label>
+  </div>
+
+  <!-- FEED LIST -->
+  <div class="project-list">
+    <div class="feed-card">
+      <div class="feed-info">
+        <div>
+          <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+            <span class="badge badge-cyan">Web Dev</span>
+            <span style="font-size:0.75rem; color:var(--text3)">Diposting 2 jam yang lalu</span>
+          </div>
+          <div style="font-size:1.1rem; font-weight:700; margin-bottom:6px;">Sistem Kasir Cloud Berbasis PWA</div>
+          <p style="font-size:0.85rem; color:var(--text2); margin-bottom:12px;">Dibutuhkan mahasiswa tingkat akhir/tengah untuk membuat web kasir ringan dengan penyimpanan offline (PWA) untuk rantai toko kelontong di Sleman.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Vue.js</span><span class="tag">Workbox</span><span class="tag">Tailwind</span>
+        </div>
+      </div>
+      <div class="feed-right">
+        <div>
+          <div style="font-size:1.3rem; font-weight:800; color:var(--green); font-family:var(--mono);">Rp 3.500.000</div>
+          <div style="font-size:0.75rem; color:var(--text3)">Estimasi pengerjaan: 3 Minggu</div>
+        </div>
+        <button class="btn btn-primary" onclick="alert('Berhasil mengirim lamaran proyek! Portofolio otomatis Anda telah terlampir.')">Ajukan Bid →</button>
+      </div>
+    </div>
+
+    <div class="feed-card">
+      <div class="feed-info">
+        <div>
+          <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+            <span class="badge badge-green">Mobile Dev</span>
+            <span style="font-size:0.75rem; color:var(--text3)">Diposting 1 hari yang lalu</span>
+          </div>
+          <div style="font-size:1.1rem; font-weight:700; margin-bottom:6px;">Aplikasi Presensi GPS Mahasiswa Magang</div>
+          <p style="font-size:0.85rem; color:var(--text2); margin-bottom:12px;">Pembuatan backend API sederhana dan aplikasi mobile berbasis Flutter untuk kebutuhan absensi harian mahasiswa magang instansi pemda.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Flutter</span><span class="tag">Laravel API</span>
+        </div>
+      </div>
+      <div class="feed-right">
+        <div>
+          <div style="font-size:1.3rem; font-weight:800; color:var(--green); font-family:var(--mono);">Rp 5.000.000</div>
+          <div style="font-size:0.75rem; color:var(--text3)">Estimasi pengerjaan: 4 Minggu</div>
+        </div>
+        <button class="btn btn-primary" onclick="alert('Berhasil mengirim lamaran proyek!')">Ajukan Bid →</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+</script>
+</body>
+</html>

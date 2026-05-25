@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ITConnect — Portofolio</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.profile-hero { background: linear-gradient(135deg, var(--surface), var(--bg2)); border: 1px solid var(--border); border-radius: var(--r2); padding: 24px; display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+.repo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.repo-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 18px; display: flex; flex-direction: column; justify-content: space-between; }
+.repo-lang { display: flex; align-items: center; gap: 6px; font-size: 0.76rem; font-weight: 600; }
+.lang-dot { width: 8px; height: 8px; border-radius: 50%; }
+</style>
+</head>
+<body>
+<div id="app-root"></div>
+<script src="shared-nav.js"></script>
+<script>
+buildNav('portfolio','Portofolio Otomatis','Etalase kode bersumber langsung dari akun GitHub Anda');
+
+document.getElementById('inner-content').innerHTML = `
+<div class="profile-hero">
+  <div class="avatar" style="width:64px; height:64px; font-size:1.5rem;">AF</div>
+  <div style="flex:1;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <h2 style="font-size:1.3rem; font-weight:800;">Afiq Fathurrahman</h2>
+      <span class="badge badge-cyan">Verified Student</span>
+    </div>
+    <p style="font-size:0.88rem; color:var(--text2)">Universitas AMIKOM Yogyakarta • S1 Teknik Informatika</p>
+    <div style="font-size:0.8rem; color:var(--text3); margin-top:4px;">🔗 github.com/afiqfathur</div>
+  </div>
+  <button class="btn btn-outline btn-sm" onclick="alert('Mengambil repositori terbaru...')">🔄 Sinkronisasi Git</button>
+</div>
+
+<div class="card-title" style="margin-bottom:14px;">📦 GitHub Repositories (Terpilih untuk Showcase)</div>
+<div class="repo-grid">
+  <div class="repo-card">
+    <div>
+      <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+        <span style="font-family:var(--mono); font-weight:700; font-size:0.95rem; color:var(--cyan)">point-of-sale-pwa</span>
+        <span class="badge badge-green">Public</span>
+      </div>
+      <p style="font-size:0.82rem; color:var(--text2); margin-bottom:14px;">Aplikasi kasir ringan berbasis web dengan kemampuan caching offline total terintegrasi IndexedDB.</p>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div class="repo-lang"><div class="lang-dot" style="background:#f1e05a"></div>JavaScript</div>
+      <span style="font-size:0.75rem; color:var(--text3)">⭐ 12 Stars</span>
+    </div>
+  </div>
+
+  <div class="repo-card">
+    <div>
+      <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+        <span style="font-family:var(--mono); font-weight:700; font-size:0.95rem; color:var(--cyan)">go-rest-api-boilerplate</span>
+        <span class="badge badge-green">Public</span>
+      </div>
+      <p style="font-size:0.82rem; color:var(--text2); margin-bottom:14px;">Arsitektur bersih (Clean Architecture) untuk REST API menggunakan Golang, Gin, dan GORM.</p>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div class="repo-lang"><div class="lang-dot" style="background:#00add8"></div>Go</div>
+      <span style="font-size:0.75rem; color:var(--text3)">⭐ 45 Stars</span>
+    </div>
+  </div>
+</div>`;
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ITConnect — Chat</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.chat-box-layout { display: grid; grid-template-columns: 240px 1fr; height: calc(100vh - 160px); background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; }
+.chat-sidebar { border-right: 1px solid var(--border); background: var(--bg2); overflow-y: auto; }
+.chat-user-item { padding: 14px; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; gap: 10px; transition: background 0.15s; }
+.chat-user-item:hover { background: var(--surface); }
+.chat-user-item.active { background: var(--surface2); border-left: 3px solid var(--cyan); }
+.chat-main-area { display: flex; flex-direction: column; justify-content: space-between; background: var(--bg); }
+.chat-messages { padding: 20px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+.msg-bubble { max-width: 70%; padding: 10px 14px; border-radius: 12px; font-size: 0.88rem; }
+.msg-incoming { background: var(--surface); align-self: flex-start; color: var(--text); border-bottom-left-radius: 2px; }
+.msg-outgoing { background: var(--cyan-dim); color: var(--cyan); align-self: flex-end; border-bottom-right-radius: 2px; }
+.chat-input-bar { padding: 14px; border-top: 1px solid var(--border); background: var(--surface); display: flex; gap: 10px; }
+</style>
+</head>
+<body>
+<div id="app-root"></div>
+<script src="shared-nav.js"></script>
+<script>
+buildNav('chat','Ruang Diskusi','Diskusikan rincian teknis pekerjaan langsung dengan klien');
+
+document.getElementById('inner-content').innerHTML = `
+<div class="chat-box-layout">
+  <div class="chat-sidebar">
+    <div class="chat-user-item active">
+      <div class="avatar" style="width:28px; height:28px; font-size:0.7rem;">DS</div>
+      <div>
+        <div style="font-size:0.82rem; font-weight:700;">Dr. Suwandi</div>
+        <div style="font-size:0.7rem; color:var(--green)">Online</div>
+      </div>
+    </div>
+    <div class="chat-user-item">
+      <div class="avatar" style="width:28px; height:28px; font-size:0.7rem; background:var(--amber)">RN</div>
+      <div>
+        <div style="font-size:0.82rem; font-weight:700;">Rian Nugraha</div>
+        <div style="font-size:0.7rem; color:var(--text3)">Offline</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="chat-main-area">
+    <div class="chat-messages">
+      <div class="msg-bubble msg-incoming">Halo Afiq, bagaimana perkembangan modul integrasi API pembayaran untuk sistem antrean klinik?</div>
+      <div class="msg-bubble msg-outgoing">Halo Dok! Sudah rampung sekitar 85%. Endpoint sudah saya uji via Postman, malam ini saya push ke repositori pengerjaan.</div>
+      <div class="msg-bubble msg-incoming">Bagus sekali. Pastikan keamanan datanya ya, karena data pasien sensitif. Terima kasih komitmennya.</div>
+    </div>
+    <div class="chat-input-bar">
+      <input type="text" class="input-field" placeholder="Tulis pesan teknis di sini..." style="margin-bottom:0; flex:1;"/>
+      <button class="btn btn-primary">Kirim</button>
+    </div>
+  </div>
+</div>`;
+</script>
+</body>
+</html>

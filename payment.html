@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ITConnect — Pembayaran</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.pay-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; margin-top: 14px; }
+.pay-table th { padding: 12px; border-bottom: 1px solid var(--border2); color: var(--text2); font-weight: 600; }
+.pay-table td { padding: 14px 12px; border-bottom: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div id="app-root"></div>
+<script src="shared-nav.js"></script>
+<script>
+buildNav('payment','Keuangan & Escrow','Kelola dana pendapatan dan verifikasi jaminan pembayaran dari klien');
+
+document.getElementById('inner-content').innerHTML = `
+<div class="stats-row" style="grid-template-columns: 1fr 1fr;">
+  <div class="stat-card" style="border-left: 4px solid var(--amber);">
+    <div class="stat-label">Sedang Diproteksi Escrow (Belum Cair)</div>
+    <div class="stat-value" style="color:var(--amber)">Rp 1.200.000</div>
+    <div class="stat-change" style="color:var(--text3)">Aman di dalam sistem ITConnect</div>
+  </div>
+  <div class="stat-card" style="border-left: 4px solid var(--green);">
+    <div class="stat-label">Dompet Digital (Siap Cair)</div>
+    <div class="stat-value" style="color:var(--green)">Rp 850.000</div>
+    <button class="btn btn-success btn-sm" style="margin-top:10px; width:100%; justify-content:center;" onclick="alert('Dana sedang ditransfer ke rekening bank Anda!')">Tarik Dana Ke Rekening →</button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📜 Riwayat Transaksi Dompet & Kontrak</div>
+  <table class="pay-table">
+    <thead>
+      <tr>
+        <th>Nama Proyek</th>
+        <th>Klien</th>
+        <th>Jumlah</th>
+        <th>Status Kontrak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:600;">Sistem Antrean Klinik Web</td>
+        <td>Dr. Suwandi</td>
+        <td style="font-family:var(--mono); font-weight:700;">Rp1.200.000</td>
+        <td><span class="badge badge-amber">🔒 Di-Escrow</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Landing Page Profil Company Cargo</td>
+        <td>PT Trans Logistik</td>
+        <td style="font-family:var(--mono); font-weight:700; color:var(--green)">Rp1.500.000</td>
+        <td><span class="badge badge-green">✓ Selesai & Cair</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>`;
+</script>
+</body>
+</html>

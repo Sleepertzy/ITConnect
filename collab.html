@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ITConnect — Kolaborasi</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.collab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.collab-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+</style>
+</head>
+<body>
+<div id="app-root"></div>
+<script src="shared-nav.js"></script>
+<script>
+buildNav('collab','Cari Rekan Tim','Kolaborasi lintas program studi/universitas untuk menyelesaikan proyek besar');
+
+document.getElementById('inner-content').innerHTML = `
+<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
+  <div style="font-size:0.88rem; color:var(--text2)">Menampilkan mahasiswa yang siap diajak tim</div>
+  <button class="btn btn-primary btn-sm" onclick="alert('Status Anda diubah menjadi Terbuka untuk Kolaborasi')">📢 Buka Status Hubungan</button>
+</div>
+
+<div class="collab-grid">
+  <div class="collab-card">
+    <div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+        <div class="avatar" style="background:var(--amber); color:#000;">RN</div>
+        <div>
+          <div style="font-weight:700; font-size:0.9rem;">Rian Nugraha</div>
+          <div style="font-size:0.74rem; color:var(--text3)">Sistem Informasi • Sem 6</div>
+        </div>
+      </div>
+      <div style="margin-bottom:12px;">
+        <span class="badge badge-amber" style="margin-bottom:6px;">UI/UX Designer</span>
+        <p style="font-size:0.82rem; color:var(--text2)">"Saya mencari partner Backend/Frontend Developer untuk mengerjakan proyek perombakan desain platform EdTech lokal."</p>
+      </div>
+    </div>
+    <button class="btn btn-outline btn-sm" style="width:100%; justify-content:center;" onclick="window.location.href='chat.html'">Ajak Ngobrol 💬</button>
+  </div>
+
+  <div class="collab-card">
+    <div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+        <div class="avatar">ER</div>
+        <div>
+          <div style="font-weight:700; font-size:0.9rem;">Elisa Rosyadi</div>
+          <div style="font-size:0.74rem; color:var(--text3)">Ilmu Komputer • Sem 4</div>
+        </div>
+      </div>
+      <div style="margin-bottom:12px;">
+        <span class="badge badge-cyan" style="margin-bottom:6px;">Backend Specialist</span>
+        <p style="font-size:0.82rem; color:var(--text2)">"Keahlian utama di Python, FastAPI, dan PostgreSQL. Siap ngerjain bagian API atau pengolahan data berat."</p>
+      </div>
+    </div>
+    <button class="btn btn-outline btn-sm" style="width:100%; justify-content:center;" onclick="window.location.href='chat.html'">Ajak Ngobrol 💬</button>
+  </div>
+</div>`;
+</script>
+</body>
+</html>
